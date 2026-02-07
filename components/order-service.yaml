@@ -1,0 +1,18 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: order-service
+  description: Backend service for order management
+  tags:
+    - java
+    - spring-boot
+    - backend
+spec:
+  type: service
+  lifecycle: production
+  owner: team-a
+  system: order-processing
+  providesApis:
+    - order-api
+  dependsOn:
+    - resource:order-db

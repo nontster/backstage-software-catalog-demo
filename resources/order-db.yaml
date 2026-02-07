@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: order-db
+  description: PostgreSQL database for orders
+  tags:
+    - postgres
+    - database
+spec:
+  type: database
+  owner: team-a
+  system: order-processing

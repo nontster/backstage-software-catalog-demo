@@ -1,0 +1,19 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: store-front
+  description: The customer-facing web store
+  tags:
+    - react
+    - frontend
+  links:
+    - url: https://store.example.com
+      title: Live Store
+      icon: website
+spec:
+  type: website
+  lifecycle: production
+  owner: team-a
+  system: order-processing
+  dependsOn:
+    - component:order-service

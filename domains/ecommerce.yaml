@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: ecommerce
+  description: E-commerce Domain
+  tags:
+    - ecommerce
+spec:
+  owner: team-a

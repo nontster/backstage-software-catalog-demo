@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: catalog-entry-point
+  description: Entry point for the Backstage Software Catalog Demo
+spec:
+  targets:
+    - ./org/users.yaml
+    - ./org/groups.yaml
+    - ./domains/ecommerce.yaml
+    - ./systems/order-processing.yaml
+    - ./components/store-front.yaml
+    - ./components/order-service.yaml
+    - ./apis/order-api.yaml
+    - ./resources/order-db.yaml

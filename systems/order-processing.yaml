@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: order-processing
+  description: System for processing customer orders
+  tags:
+    - orders
+spec:
+  owner: team-a
+  domain: ecommerce
