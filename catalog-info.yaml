@@ -1,9 +1,94 @@
 apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: marketing-domain
+  description: The Marketing Domain
+spec:
+  owner: marketing-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: marketing-system
+  description: The Marketing System
+spec:
+  owner: marketing-team
+  domain: marketing-domain
+---
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: debug-component
-  description: A debug component to verify catalog connectivity
+  name: marketing-frontend
+  description: The Marketing Website
+  links:
+    - title: Website
+      url: https://marketing.example.com
+spec:
+  type: website
+  lifecycle: production
+  owner: marketing-team
+  system: marketing-system
+  dependsOn:
+    - component:marketing-backend
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: marketing-backend
+  description: The Marketing Backend Service
 spec:
   type: service
-  lifecycle: experimental
-  owner: guests
+  lifecycle: production
+  owner: marketing-team
+  system: marketing-system
+  providesApis:
+    - marketing-api
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: marketing-api
+  description: The Marketing API
+spec:
+  type: openapi
+  lifecycle: production
+  owner: marketing-team
+  system: marketing-system
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Marketing API
+      version: 1.0.0
+      description: API for the marketing system
+    paths:
+      /promotions:
+        get:
+          summary: List promotions
+          responses:
+            '200':
+              description: Successful response
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: marketing-team
+  description: The Marketing Team
+spec:
+  type: team
+  profile:
+    displayName: Marketing Team
+    email: marketing@example.com
+    picture: https://avatars.dicebear.com/api/identicon/marketing-team.svg
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: demo-user
+spec:
+  profile:
+    displayName: Demo User
+    email: demo@example.com
+    picture: https://avatars.dicebear.com/api/avataaars/demo-user.svg
+  memberOf:
+    - marketing-team
