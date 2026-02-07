@@ -1,15 +1,9 @@
 apiVersion: backstage.io/v1alpha1
-kind: Location
+kind: Component
 metadata:
-  name: catalog-entry-point
-  description: Entry point for the Backstage Software Catalog Demo
+  name: debug-component
+  description: A debug component to verify catalog connectivity
 spec:
-  targets:
-    - ./org/users.yaml
-    - ./org/groups.yaml
-    - ./domains/ecommerce.yaml
-    - ./systems/order-processing.yaml
-    - ./components/store-front.yaml
-    - ./components/order-service.yaml
-    - ./apis/order-api.yaml
-    - ./resources/order-db.yaml
+  type: service
+  lifecycle: experimental
+  owner: guests
